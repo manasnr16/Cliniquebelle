@@ -1,0 +1,6 @@
+.band { background: linear-gradient(120deg, var(--purple-700), var(--plum-800)); color: #fff; padding: 76px 0; }
+.inner { display: flex; justify-content: space-between; align-items: center; gap: 36px; flex-wrap: wrap; }
+.band h2 { color: #fff; font-size: clamp(25px, 3vw, 34px); max-width: 18ch; }
+.band p { color: rgba(255, 255, 255, 0.82); margin-top: 10px; font-size: 14.5px; }
+.band p a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 980px) { .band { padding: 56px 0; } }

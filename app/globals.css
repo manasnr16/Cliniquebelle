@@ -1,0 +1,75 @@
+/* Design tokens + base styles, ported from the consultant's HTML files.
+   Colours are the values used in those files (not the provisional palette in the brief). */
+:root {
+  --plum-900: #2b0f2a;
+  --plum-800: #3d1636;
+  --purple-700: #6b2a66;
+  --purple-600: #8a3d82;
+  --orchid-500: #a85ba0;
+  --lilac-300: #d9aad3;
+  --lilac-100: #f1deee;
+  --blush-50: #fbf6f9;
+  --ivory: #ffffff;
+  --ink: #271a25;
+  --ink-soft: #5a4a57;
+  --line: #e8d9e5;
+  --gold: #b08d57;
+  --maxw: 1180px;
+  --font-serif: "Fraunces Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Work Sans Variable", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--blush-50);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--plum-900);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul, ol { list-style: none; margin: 0; padding: 0; }
+
+:focus-visible { outline: 2px solid var(--purple-600); outline-offset: 3px; }
+
+.skip-link {
+  position: absolute; left: 16px; top: -60px; z-index: 100;
+  background: var(--plum-900); color: #fff; padding: 12px 18px; border-radius: 2px;
+}
+.skip-link:focus { top: 12px; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+.section { padding: 88px 0; }
+.eyebrow { font-size: 13px; color: var(--purple-700); font-weight: 500; letter-spacing: 0.03em; }
+
+.btn {
+  display: inline-block; font-size: 14.5px; border-radius: 2px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-primary { background: var(--plum-900); color: #fff; padding: 15px 30px; }
+.btn-primary:hover { background: var(--purple-700); }
+.btn-secondary { border: 1px solid var(--plum-900); color: var(--plum-900); padding: 14px 29px; }
+.btn-secondary:hover { background: var(--plum-900); color: #fff; }
+.btn-white { background: #fff; color: var(--plum-900); padding: 15px 30px; }
+.btn-white:hover { background: var(--lilac-100); }
+
+@media (max-width: 980px) {
+  .wrap { padding: 0 24px; }
+  .section { padding: 60px 0; }
+}

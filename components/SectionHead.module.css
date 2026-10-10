@@ -1,0 +1,4 @@
+.head { max-width: 640px; margin-bottom: 52px; }
+.head h2 { margin-top: 14px; font-size: clamp(27px, 3vw, 36px); line-height: 1.15; }
+.head p { margin-top: 14px; color: var(--ink-soft); font-size: 16px; line-height: 1.65; }
+@media (max-width: 980px) { .head { margin-bottom: 40px; } }

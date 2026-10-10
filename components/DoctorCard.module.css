@@ -1,0 +1,15 @@
+.card { border: 1px solid var(--line); }
+.compactCard { padding: 34px; background: var(--ivory); }
+.photoCard { background: var(--blush-50); }
+.avatar { position: relative; width: 72px; height: 72px; border-radius: 50%; overflow: hidden; margin-bottom: 20px; background: var(--lilac-100); }
+.photoWrap { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--lilac-100); }
+.img { object-fit: cover; }
+.photoWrap .img { object-position: top center; }
+.body { padding: 28px 30px; }
+.name { font-size: 22px; }
+.photoCard .name { font-size: 21px; }
+.role { color: var(--purple-700); font-size: 13.5px; margin-top: 6px; font-weight: 500; }
+.bio { margin-top: 16px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.7; }
+.links { margin-top: 18px; }
+.links a { font-size: 13px; color: var(--purple-700); border-bottom: 1px solid var(--orchid-500); padding-bottom: 2px; }
+.links a:hover { color: var(--plum-900); }

@@ -1,0 +1,17 @@
+{
+  "_source": "https://cliniquebelle.in/page-sitemap.xml, read 11 Oct 2026 via a web-fetch tool. Re-verify against the raw file before launch.",
+  "paths": [
+    "/", "/sample-page/", "/terms-and-conditions/", "/privacy-policy/", "/sitemap/",
+    "/breast-lift-surgery-in-bangalore/", "/rhinoplasty-surgery-in-bangalore/", "/gynecomastia-surgery-in-bangalore/",
+    "/liposuction-in-bangalore/", "/hair-transplantation-in-bangalore/", "/abdominoplasty-surgery-in-bangalore/",
+    "/breast-reduction-surgery-in-bangalore/", "/breast-augmentation-surgery-in-bangalore/", "/facelift-surgery-in-bangalore/",
+    "/eyelid-surgery-in-bangalore/", "/mommy-makeover-in-bangalore/", "/facial-rejuvenation-in-bangalore/",
+    "/scar-revision-surgery-in-bangalore/", "/mole-removal-surgery-in-bangalore/", "/earlobe-repair-surgery-in-bangalore/",
+    "/fat-injection-in-bangalore/", "/microsurgery-in-bangalore/", "/cranio-maxillofacial-surgery-in-bangalore/",
+    "/cleft-lip-and-palate-surgery-in-bangalore/", "/hand-surgery-in-bangalore/", "/thumb-reconstruction-surgery-in-bangalore/",
+    "/peripheral-nerve-surgery-in-bangalore/", "/brachial-plexus-surgery-in-bangalore/", "/corrective-surgery-in-bangalore/",
+    "/burns-treatment-in-bangalore/", "/lymphedema-treatment-in-bangalore/", "/breast-reconstruction-surgery-in-bangalore/",
+    "/dr-srikanth-v/", "/dr-anupama-t-srikanth/", "/contact-us/", "/faq/", "/plastic-cosmetic-surgery-videos/", "/gallery/"
+  ],
+  "newPathsExpected": ["/about-us/"]
+}

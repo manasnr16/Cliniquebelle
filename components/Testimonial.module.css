@@ -1,0 +1,14 @@
+.card { margin: 0; background: var(--ivory); padding: 30px 28px; }
+.quote { margin: 0; }
+.quote p { font-family: var(--font-serif); font-size: 16px; line-height: 1.6; font-style: italic; color: var(--plum-800); }
+.name { display: block; margin-top: 20px; font-size: 13px; color: var(--ink-soft); }
+/* Darker than the original orchid so this small text passes WCAG AA contrast. */
+.source { display: block; margin-top: 16px; font-size: 11.5px; color: var(--purple-600); letter-spacing: 0.02em; }
+
+.mini { margin: 0; background: var(--ivory); border: 1px solid var(--line); border-left: 2px solid var(--orchid-500); padding: 26px; }
+.mini blockquote { margin: 0; }
+.mini p { font-family: var(--font-serif); font-style: italic; font-size: 15px; color: var(--plum-800); line-height: 1.55; }
+.mini figcaption { display: block; margin-top: 14px; font-size: 12.5px; color: var(--ink-soft); }
+.mini.plain { border-width: 0 0 0 2px; padding: 20px 22px; }
+.mini.plain p { font-size: 15px; }
+.mini.plain figcaption { font-size: 12.5px; }
