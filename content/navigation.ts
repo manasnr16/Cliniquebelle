@@ -3,14 +3,15 @@ import { routes, hrefFor } from "@/lib/routes";
 /**
  * One navigation shared by every page. The supplied Home and About Us files used two
  * different menus; this unifies them (decision for the consultant to confirm).
- * Anchors use "/#..." so they also work when clicked from the About Us page.
+ * Each item is its own dedicated page.
  */
 export const mainNav = [
   { key: "about", label: "About", href: routes.about.path },
-  { key: "procedures", label: "Procedures", href: "/#procedures" },
-  { key: "doctors", label: "Our doctors", href: "/#doctors" },
-  { key: "reviews", label: "Reviews", href: "/#reviews" },
-  { key: "contact", label: "Contact", href: hrefFor(routes.contact) },
+  { key: "procedures", label: "Procedures", href: routes.procedures.path },
+  { key: "doctors", label: "Our doctors", href: routes.ourDoctors.path },
+  { key: "reviews", label: "Testimonials", href: routes.testimonials.path },
+  { key: "videos", label: "Videos", href: routes.videos.path },
+  { key: "contact", label: "Contact", href: routes.contact.path },
 ] as const;
 
 export type NavKey = (typeof mainNav)[number]["key"];
@@ -43,6 +44,9 @@ export const footerReconstructive = [
 export const footerClinic = [
   { label: "Home", href: routes.home.path },
   { label: "About Us", href: routes.about.path },
+  link("Procedures", routes.procedures),
+  link("Our Doctors", routes.ourDoctors),
+  link("Testimonials", routes.testimonials),
   link("Dr. Srikanth V", routes.drSrikanth),
   link("Dr. Anupama T Srikanth", routes.drAnupama),
   link("Hair Transplantation", routes.hairTransplantation),

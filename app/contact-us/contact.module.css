@@ -1,0 +1,10 @@
+.section { background: var(--ivory); }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.card { border: 1px solid var(--line); border-radius: 16px; padding: 44px 40px; background: var(--blush-50); }
+.card h2 { font-size: 24px; margin-bottom: 20px; }
+.card > a:not(.link) { display: block; font-family: var(--font-serif); font-size: clamp(26px, 3vw, 34px); color: var(--purple-700); margin-bottom: 8px; }
+.card > a:not(.link):hover { color: var(--plum-900); }
+.card address { font-style: normal; font-size: 18px; line-height: 1.7; color: var(--ink); }
+.card address span { display: block; }
+.link { display: inline-block; margin-top: 20px; font-size: 14px; color: var(--purple-700); border-bottom: 1px solid var(--orchid-500); padding-bottom: 2px; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .card { padding: 32px 26px; } }

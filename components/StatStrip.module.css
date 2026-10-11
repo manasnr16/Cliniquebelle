@@ -11,3 +11,4 @@
   .item { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 18px; }
   .item:nth-child(1), .item:nth-child(2) { border-top: none; padding-top: 0; }
 }
+.num { color: var(--purple-700); }

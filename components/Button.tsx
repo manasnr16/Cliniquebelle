@@ -3,7 +3,7 @@ import AppLink from "./AppLink";
 
 type Props = {
   href: string;
-  variant?: "primary" | "secondary" | "white";
+  variant?: "primary" | "secondary" | "white" | "ghost";
   children: ReactNode;
   ariaLabel?: string;
   className?: string;

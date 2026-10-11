@@ -17,6 +17,11 @@ export const routes = {
   home: r("/", "Home", true),
   about: r("/about-us/", "About Us", true), // NEW URL: not in the live page sitemap. Needs consultant approval.
 
+  // NEW URLs (not in the live page sitemap): dedicated pages split out of the old single-page home. Need approval.
+  procedures: r("/procedures/", "Procedures", true),
+  ourDoctors: r("/our-doctors/", "Our Doctors", true),
+  testimonials: r("/testimonials/", "Testimonials", true),
+
   drSrikanth: r("/dr-srikanth-v/", "Dr. Srikanth V"),
   drAnupama: r("/dr-anupama-t-srikanth/", "Dr. Anupama T Srikanth"),
 
@@ -53,9 +58,9 @@ export const routes = {
   correctiveSurgery: r("/corrective-surgery-in-bangalore/", "Corrective surgery"),
 
   gallery: r("/gallery/", "Gallery"),
-  videos: r("/plastic-cosmetic-surgery-videos/", "Videos"),
+  videos: r("/plastic-cosmetic-surgery-videos/", "Videos", true),
   faq: r("/faq/", "FAQs"),
-  contact: r("/contact-us/", "Contact us"),
+  contact: r("/contact-us/", "Contact us", true),
   privacy: r("/privacy-policy/", "Privacy Policy"),
   terms: r("/terms-and-conditions/", "Terms & Conditions"),
   sitemap: r("/sitemap/", "Sitemap"),

@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
     // folder. Replace with files in /public/images once originals are supplied.
     remotePatterns: [
       { protocol: "https", hostname: "cliniquebelle.in", pathname: "/wp-content/uploads/**" },
+      { protocol: "https", hostname: "img.youtube.com", pathname: "/vi/**" },
     ],
   },
   async headers() {

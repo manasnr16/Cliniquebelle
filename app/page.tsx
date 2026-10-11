@@ -1,25 +1,20 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import AppLink from "@/components/AppLink";
 import Button from "@/components/Button";
 import ConsultationCTA from "@/components/ConsultationCTA";
-import DoctorCard from "@/components/DoctorCard";
+import HeroCarousel, { type HeroSlide } from "@/components/HeroCarousel";
+import Icon from "@/components/Icons";
 import PageShell from "@/components/PageShell";
-import SectionHead from "@/components/SectionHead";
-import StatStrip from "@/components/StatStrip";
-import AppLink from "@/components/AppLink";
-import { QuoteMini, ReviewCard } from "@/components/Testimonial";
-import {
-  credentials,
-  featuredVideos,
-  heroQuote,
-  heroStats,
-  procedureGroups,
-  reviewStats,
-  trustStats,
-  whyParagraphs,
-} from "@/content/home";
-import { doctors, drSrikanth } from "@/content/doctors";
+import Parallax from "@/components/Parallax";
+import ProcedureCarousel from "@/components/ProcedureCarousel";
+import Reveal from "@/components/Reveal";
+import SlotImage from "@/components/SlotImage";
+import TestimonialSlider from "@/components/TestimonialSlider";
+import { discover, heroStats, procedureCards } from "@/content/home";
+import { drSrikanth } from "@/content/doctors";
 import { testimonials } from "@/content/testimonials";
+import { slotSrc } from "@/lib/images";
 import { hrefFor, routes } from "@/lib/routes";
 import { buildMetadata } from "@/lib/seo";
 import styles from "./home.module.css";
@@ -35,183 +30,164 @@ export const metadata: Metadata = buildMetadata({
 
 export default function HomePage() {
   const contact = hrefFor(routes.contact);
+  const slides: HeroSlide[] = [
+    {
+      id: "welcome",
+      eyebrow: "Koramangala, Bangalore · Est. 2012",
+      title: "Look good.",
+      titleEm: "Feel great.",
+      text: "Plastic, cosmetic and reconstructive surgery led by Dr. Srikanth V — 31 years in surgical practice, trusted by patients across Bangalore.",
+      cta: { label: "Book a consultation", href: contact },
+      src: slotSrc("hero-welcome"),
+      alt: "A patient at Clinique Belle, Bangalore",
+      tone: "a",
+    },
+    {
+      id: "mummy-makeover",
+      eyebrow: "Mommy makeover",
+      title: "Rediscover yourself",
+      titleEm: "after motherhood.",
+      text: "A surgeon-planned, combined approach to restoring the body after pregnancy — your goals, your options explained clearly, no pressure.",
+      cta: { label: "Explore mommy makeover", href: hrefFor(routes.mommyMakeover) },
+      src: slotSrc("hero-mummy-makeover"),
+      alt: "A mother with her child, representing the mommy makeover procedure",
+      tone: "b",
+    },
+    {
+      id: "hair",
+      eyebrow: "Hair transplantation",
+      title: "Restore your",
+      titleEm: "hairline.",
+      text: "Evaluated and performed as a surgical procedure, not a walk-in service, with an honest view of what is realistic for you.",
+      cta: { label: "Explore hair restoration", href: hrefFor(routes.hairTransplantation) },
+      src: slotSrc("hero-hair"),
+      alt: "A man reviewing his hairline with a surgeon",
+      tone: "c",
+    },
+    {
+      id: "face",
+      eyebrow: "Facial rejuvenation",
+      title: "Refresh, with",
+      titleEm: "natural balance.",
+      text: "Facelift, rhinoplasty, eyelid surgery and facial rejuvenation, planned around your own features.",
+      cta: { label: "Explore facial procedures", href: hrefFor(routes.facialRejuvenation) },
+      src: slotSrc("hero-face"),
+      alt: "A woman with refreshed, natural-looking skin",
+      tone: "d",
+    },
+  ];
+  const cards = procedureCards.map((c) => ({ slot: c.slot, title: c.title, text: c.text, href: hrefFor(c.route), src: slotSrc(c.slot) }));
   return (
     <PageShell>
-      <section className={styles.hero} aria-labelledby="hero-heading">
-        <div className={`wrap ${styles.heroGrid}`}>
-          <div>
-            <span className={styles.heroEyebrow}>Koramangala, Bangalore · Est. 2012</span>
-            {/* APPROVAL NEEDED: this H1 is a tagline with no keywords (the live H1 is also a tagline). */}
-            <h1 id="hero-heading">
-              Look good.
-              <br />
-              Feel <em>great.</em>
-            </h1>
-            <p className={styles.heroSub}>
-              Plastic, cosmetic and reconstructive surgery led by Dr. Srikanth V — 31 years in surgical practice, trusted by patients
-              across Bangalore for hair transplantation, body contouring, facial rejuvenation and reconstructive care.
-            </p>
-            <p className={styles.rating}>
-              {/* Stars are decorative. APPROVAL NEEDED: confirm a star display is acceptable; the source only states "127+ recommend". */}
-              <span className={styles.stars} aria-hidden="true">
-                ★★★★★
+      {/* ===== HERO CAROUSEL ===== */}
+      <HeroCarousel slides={slides} secondary={{ label: "Read patient reviews", href: routes.testimonials.path }}>
+        <aside className={styles.strip} aria-label="Dr. Srikanth V at a glance">
+          <div className={`wrap ${styles.stripInner}`}>
+            <div className={styles.stripDoc}>
+              <span className={styles.stripPhoto}>
+                <Image src={drSrikanth.photo} alt="" fill sizes="52px" className={styles.cover} />
               </span>
               <span>
-                <strong>127+ patients</strong> recommend Dr. Srikanth V on Practo
+                <strong>{drSrikanth.name}</strong>
+                <span>{drSrikanth.title}</span>
               </span>
-            </p>
-            <div className={styles.ctas}>
-              <Button href={contact}>Book a consultation</Button>
-              <Button href="#reviews" variant="secondary">
-                Read patient reviews
-              </Button>
             </div>
-            <QuoteMini plain quote={heroQuote.quote} attribution={heroQuote.attribution} />
-          </div>
-
-          <aside className={styles.cred} aria-label="Dr. Srikanth V at a glance">
-            <div className={styles.credDoc}>
-              <div className={styles.credPhoto}>
-                <Image src={drSrikanth.photo} alt={drSrikanth.name} fill sizes="64px" className={styles.cover} priority />
-              </div>
-              <div>
-                <p className={styles.credName}>{drSrikanth.name}</p>
-                <p className={styles.credRole}>{drSrikanth.credentials}</p>
-              </div>
-            </div>
-            <dl className={styles.credStats}>
-              {heroStats.map((s) => (
-                <div key={s.num}>
-                  <dt className={styles.credNum}>{s.num}</dt>
-                  <dd className={styles.credLabel}>{s.label}</dd>
+            <dl className={styles.stripStats}>
+              {heroStats.slice(0, 3).map((st) => (
+                <div key={st.num}>
+                  <dt>{st.num}</dt>
+                  <dd>{st.label}</dd>
                 </div>
               ))}
             </dl>
-          </aside>
-        </div>
+          </div>
+        </aside>
+      </HeroCarousel>
 
-        <StatStrip items={trustStats} edge="top" className={styles.trust} />
-      </section>
-
-      <div className={styles.featured}>
-        <div className={`wrap ${styles.featuredInner}`}>
-          <span className={styles.featuredLabel}>Featured on Doctors&apos; Circle — India&apos;s largest health video platform</span>
-          <ul className={styles.featuredLinks}>
-            {featuredVideos.map((v) => (
-              <li key={v.href}>
-                <AppLink href={v.href} newTab>
-                  {v.label}
-                </AppLink>
+      {/* ===== DISCOVER A NEW YOU ===== */}
+      <section className={`section ${styles.discover}`} id="discover" aria-labelledby="discover-heading">
+        <div className="wrap">
+          <Reveal className={styles.center}>
+            <span className="eyebrow">Welcome to Clinique Belle</span>
+            <h2 id="discover-heading" className={styles.bigTitle}>
+              Discover a new you
+            </h2>
+          </Reveal>
+          <ul className={styles.tiles}>
+            {discover.map((d, i) => (
+              <li key={d.title}>
+                <Reveal delay={i * 0.12} className={styles.tileReveal}>
+                  <AppLink href={hrefFor(d.route)} className={styles.tile}>
+                    <span className={styles.tileIcon}>
+                      <Icon name={d.icon} />
+                    </span>
+                    <span className={styles.tileTitle}>{d.title}</span>
+                    <span className={styles.tileText}>{d.text}</span>
+                  </AppLink>
+                </Reveal>
               </li>
             ))}
           </ul>
-        </div>
-      </div>
-
-      <section className={`section ${styles.reviews}`} id="reviews" aria-labelledby="reviews-heading">
-        <div className="wrap">
-          <SectionHead
-            id="reviews-heading"
-            eyebrow="Patient reviews"
-            title="What patients say after their procedure"
-            description="Shared directly by patients on the clinic's own testimonials page and on independent healthcare directories."
-          />
-          <dl className={styles.reviewStats}>
-            {reviewStats.map((s) => (
-              <div key={s.num}>
-                <dt className={styles.reviewStatNum}>{s.num}</dt>
-                <dd className={styles.reviewStatLabel}>{s.label}</dd>
-              </div>
-            ))}
-          </dl>
-          <div className={styles.reviewGrid}>
-            {testimonials.map((t) => (
-              <ReviewCard key={t.attribution} {...t} />
-            ))}
-          </div>
+          <Reveal className={styles.center}>
+            <Button href={routes.about.path}>About the clinic</Button>
+          </Reveal>
         </div>
       </section>
 
-      <section className={`section ${styles.why}`} aria-labelledby="why-heading">
-        <div className={`wrap ${styles.whyGrid}`}>
-          <div className={styles.whyFigure}>
-            <Image
-              src={drSrikanth.photo}
-              alt={drSrikanth.photoAlt}
-              fill
-              sizes="(max-width: 980px) 100vw, 480px"
-              className={styles.cover}
-            />
-          </div>
-          <div>
-            <span className="eyebrow">Why patients choose Clinique Belle</span>
-            <h2 id="why-heading" className={styles.whyTitle}>
-              A surgeon&apos;s practice, not a sales floor
+      {/* ===== PROCEDURES ===== */}
+      <section className={`section ${styles.procedures}`} aria-labelledby="procedures-heading">
+        <div className="wrap">
+          <Reveal className={styles.center}>
+            <span className="eyebrow">View our services</span>
+            <h2 id="procedures-heading" className={styles.bigTitle}>
+              Our procedures
             </h2>
-            <div className={styles.whyBody}>
-              {whyParagraphs.map((p) => (
-                <p key={p.slice(0, 24)}>{p}</p>
-              ))}
-            </div>
-            <ul className={styles.credentials}>
-              {credentials.map((c) => (
-                <li key={c}>
-                  <span className={styles.dot} aria-hidden="true" />
-                  {c}
-                </li>
-              ))}
-            </ul>
-            <p className={styles.moreAbout}>
-              <AppLink href={routes.about.path}>More about Clinique Belle</AppLink>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <ProcedureCarousel cards={cards} />
+          </Reveal>
+          <Reveal className={styles.center}>
+            <Button href={routes.procedures.path} variant="secondary">
+              View all procedures
+            </Button>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== TESTIMONIALS (split band) ===== */}
+      <section className={styles.reviews} aria-labelledby="reviews-heading">
+        <div className={styles.reviewPhoto}>
+          <SlotImage slot="testimonial" alt="" sizes="(max-width: 980px) 100vw, 50vw" position="center top" />
+        </div>
+        <div className={styles.reviewBody}>
+          <Reveal variant="left">
+            <h2 id="reviews-heading" className={styles.bigTitle}>
+              Testimonials
+            </h2>
+            <p className={styles.reviewLead}>Shared directly by patients on the clinic&apos;s own testimonials page and on Practo.</p>
+            <TestimonialSlider items={testimonials.slice(0, 3)} />
+            <p className={styles.reviewMore}>
+              <AppLink href={routes.testimonials.path}>Read all testimonials</AppLink>
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className={`section ${styles.services}`} id="procedures" aria-labelledby="procedures-heading">
-        <div className="wrap">
-          <SectionHead
-            id="procedures-heading"
-            eyebrow="Procedures"
-            title="Care organised around what you're here for"
-            description="From a first hair-fall consultation to complex reconstructive surgery, every category below is led directly by Dr. Srikanth V."
-          />
-          <div className={styles.groups}>
-            {procedureGroups.map((group, i) => (
-              <div key={group.title} className={styles.group}>
-                <div>
-                  <h3 className={styles.groupTitle}>
-                    <span className={styles.groupNum} aria-hidden="true">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    {group.title}
-                  </h3>
-                  <p className={styles.groupDesc}>{group.description}</p>
-                </div>
-                <ul className={styles.pills}>
-                  {group.items.map((route) => (
-                    <li key={route.path}>
-                      <AppLink href={hrefFor(route)} className={styles.pill}>
-                        {route.label}
-                      </AppLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+      {/* ===== DOCTORS BAND ===== */}
+      <section className={styles.band} aria-labelledby="band-heading">
+        <div className={styles.bandBg} aria-hidden="true">
+          <Parallax speed={0.2}>
+            <SlotImage slot="doctors-band" alt="" sizes="100vw" />
+          </Parallax>
+          <div className={styles.bandShade} />
         </div>
-      </section>
-
-      <section className={`section ${styles.doctors}`} id="doctors" aria-labelledby="doctors-heading">
-        <div className="wrap">
-          <SectionHead id="doctors-heading" eyebrow="Our team" title="The two doctors behind every procedure" />
-          <div className={styles.doctorGrid}>
-            {doctors.map((d) => (
-              <DoctorCard key={d.id} doctor={d} variant="compact" />
-            ))}
-          </div>
-        </div>
+        <Reveal variant="zoom" className={`wrap ${styles.bandInner}`}>
+          <h2 id="band-heading">Our doctors are high-level professionals</h2>
+          <p>Every procedure is planned and performed by a senior surgeon, with a dedicated anaesthetist overseeing safety and comfort.</p>
+          <Button href={routes.ourDoctors.path} variant="white">
+            Meet our doctors
+          </Button>
+        </Reveal>
       </section>
 
       <ConsultationCTA />

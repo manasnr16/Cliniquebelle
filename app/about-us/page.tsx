@@ -6,7 +6,9 @@ import ConsultationCTA from "@/components/ConsultationCTA";
 import DoctorCard from "@/components/DoctorCard";
 import JsonLd from "@/components/JsonLd";
 import PageShell from "@/components/PageShell";
+import Reveal from "@/components/Reveal";
 import SectionHead from "@/components/SectionHead";
+import SlotImage from "@/components/SlotImage";
 import SpecArt from "@/components/SpecArt";
 import StatStrip from "@/components/StatStrip";
 import { QuoteMini } from "@/components/Testimonial";
@@ -69,7 +71,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className={styles.art}>
+          <Reveal variant="right" className={styles.art}>
             <div className={styles.frame} aria-hidden="true" />
             <div className={styles.photo}>
               {/* Alt text changed from "consulting with a patient" (unverifiable) to a plain description. */}
@@ -86,7 +88,7 @@ export default function AboutPage() {
               <strong>{drSrikanth.name}</strong>
               <span>Consultant Plastic, Cosmetic &amp; Reconstructive Surgeon — 31+ years in practice</span>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -98,11 +100,11 @@ export default function AboutPage() {
             <span className="eyebrow">About Clinique Belle</span>
             <h2 id="who-heading">Who we are</h2>
           </div>
-          <div className={styles.copyBody}>
+          <Reveal className={styles.copyBody}>
             {whoWeAre.map((p) => (
               <p key={p.slice(0, 24)}>{p}</p>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -115,15 +117,15 @@ export default function AboutPage() {
             description="Every category is led directly by Dr. Srikanth V, not delegated to a general practitioner."
           />
           <div className={styles.specGrid}>
-            {specialties.map((s) => (
-              <article key={s.title} className={styles.specCard}>
+            {specialties.map((s, i) => (
+              <Reveal as="article" delay={i * 0.12} key={s.title} className={styles.specCard}>
                 <div className={styles.specArt}>
                   <SpecArt kind={s.art} />
                 </div>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
                 <AppLink href={hrefFor(s.link)}>{s.cta}</AppLink>
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -133,8 +135,10 @@ export default function AboutPage() {
         <div className="wrap">
           <SectionHead id="doctors-heading" eyebrow="Our team" title="The two doctors behind every procedure" />
           <div className={styles.doctorGrid}>
-            {doctors.map((d) => (
-              <DoctorCard key={d.id} doctor={d} variant="photo" />
+            {doctors.map((d, i) => (
+              <Reveal key={d.id} delay={i * 0.12}>
+                <DoctorCard doctor={d} variant="photo" />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -143,22 +147,9 @@ export default function AboutPage() {
       <section className={`section ${styles.experience}`} aria-labelledby="exp-heading">
         <div className="wrap">
           <div className={styles.expGrid}>
-            <div className={styles.expArt} aria-hidden="true">
-              <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" focusable="false" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                  <linearGradient id="exp-gradient" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stopColor="#8A3D82" />
-                    <stop offset="1" stopColor="#3D1636" />
-                  </linearGradient>
-                </defs>
-                <rect width="400" height="500" fill="url(#exp-gradient)" />
-                <rect x="40" y="60" width="320" height="2" fill="#D9AAD3" opacity="0.4" />
-                <rect x="40" y="120" width="220" height="2" fill="#D9AAD3" opacity="0.4" />
-                <circle cx="200" cy="300" r="90" fill="#F1DEEE" opacity="0.12" />
-                <circle cx="200" cy="300" r="50" fill="#D9AAD3" opacity="0.25" />
-                <rect x="40" y="420" width="160" height="2" fill="#D9AAD3" opacity="0.4" />
-              </svg>
-            </div>
+            <Reveal variant="left" className={styles.expArt}>
+              <SlotImage slot="about-expect" alt="" sizes="(max-width: 980px) 100vw, 520px" />
+            </Reveal>
             <div>
               <span className={styles.expEyebrow}>What to expect</span>
               <h2 id="exp-heading">A consultation, not a consultation pitch</h2>
@@ -184,8 +175,10 @@ export default function AboutPage() {
         <div className="wrap">
           <SectionHead id="words-heading" eyebrow="In patients' words" title="What people say after visiting" />
           <div className={styles.reviewRow}>
-            {aboutTestimonials.map((t) => (
-              <QuoteMini key={t.attribution} {...t} />
+            {aboutTestimonials.map((t, i) => (
+              <Reveal key={t.attribution} delay={i * 0.12}>
+                <QuoteMini {...t} />
+              </Reveal>
             ))}
           </div>
         </div>

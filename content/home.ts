@@ -102,3 +102,28 @@ export const heroQuote = {
     "His experience and confidence, combined with his genuine care for patient comfort, made surgery feel like a pleasant experience with no worries at all.",
   attribution: "Rekha, Bangalore, Practo review",
 };
+
+/** "Discover a new you" icon row (Renewal template's four-category strip). Links go to a representative procedure. */
+export const discover = [
+  { icon: "face", title: "Face", text: "Facelift, rhinoplasty, eyelid surgery and rejuvenation.", route: routes.facialRejuvenation },
+  { icon: "body", title: "Body", text: "Liposuction, abdominoplasty and body contouring.", route: routes.liposuction },
+  { icon: "breast", title: "Breast", text: "Augmentation, reduction, lift and reconstruction.", route: routes.breastAugmentation },
+  { icon: "hair", title: "Hair", text: "Hair transplantation and hair-fall solutions.", route: routes.hairTransplantation },
+] as const;
+
+export type IconName = (typeof discover)[number]["icon"];
+
+/** Cards in the procedures carousel: one per existing procedure group. */
+export const procedureCards = [
+  { slot: "proc-hair", title: "Hair restoration", text: "Hair transplantation and solutions for hair fall.", route: routes.hairTransplantation },
+  { slot: "proc-body", title: "Body contouring", text: "Reshaping and refining the body's natural contours.", route: routes.liposuction },
+  { slot: "proc-face", title: "Facial rejuvenation", text: "Refreshing and restoring facial structure and skin.", route: routes.facelift },
+  { slot: "proc-breast", title: "Breast procedures", text: "Augmentation, reduction and reconstructive breast surgery.", route: routes.breastAugmentation },
+  { slot: "proc-reconstructive", title: "Reconstructive & microsurgery", text: "Complex reconstructive cases and specialised surgical repair.", route: routes.microsurgery },
+] as const;
+
+/** YouTube ids for the thumbnails (taken from the video links above). */
+export const videoCards = featuredVideos.map((v) => ({
+  ...v,
+  thumb: `https://img.youtube.com/vi/${new URL(v.href).searchParams.get("v")}/hqdefault.jpg`,
+}));

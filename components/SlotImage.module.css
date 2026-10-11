@@ -1,0 +1,8 @@
+.img { object-fit: cover; }
+.fallback {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(217, 170, 211, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(176, 141, 87, 0.22), transparent 40%),
+    linear-gradient(150deg, var(--purple-600), var(--plum-900));
+}

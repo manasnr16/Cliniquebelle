@@ -3,6 +3,7 @@ import { footerClinic, footerCosmetic, footerLegal, footerReconstructive } from 
 import { routes, hrefFor } from "@/lib/routes";
 import { site } from "@/lib/site";
 import AppLink from "./AppLink";
+import Reveal from "./Reveal";
 import styles from "./Footer.module.css";
 
 type LinkItem = { label: string; href: string };
@@ -30,7 +31,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`wrap ${styles.wrap}`}>
-        <div className={styles.top}>
+        <Reveal className={styles.top}>
           <div className={styles.brand}>
             <AppLink href="/">
               <Image
@@ -39,6 +40,7 @@ export default function Footer() {
                 height={site.logo.height}
                 alt="Clinique Belle — Advanced Plastic & Cosmetic Surgery"
                 unoptimized
+                className={styles.logo}
               />
             </AppLink>
             <p>{site.footerBlurb}</p>
@@ -81,7 +83,7 @@ export default function Footer() {
               Book a consultation
             </AppLink>
           </div>
-        </div>
+        </Reveal>
 
         <div className={styles.bottom}>
           <span>© {new Date().getFullYear()} Clinique Belle. All rights reserved.</span>

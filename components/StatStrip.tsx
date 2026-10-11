@@ -1,3 +1,5 @@
+import CountUp from "./CountUp";
+import Reveal from "./Reveal";
 import styles from "./StatStrip.module.css";
 
 type Props = {
@@ -11,14 +13,16 @@ type Props = {
 export default function StatStrip({ items, edge, className = "" }: Props) {
   return (
     <div className={`${styles.strip} ${edge === "top" ? styles.top : styles.bottom} ${className}`.trim()}>
-      <dl className={`wrap ${styles.grid}`}>
+      <Reveal as="dl" className={`wrap ${styles.grid}`}>
         {items.map((item) => (
           <div key={item.num} className={styles.item}>
-            <dt className={styles.num}>{item.num}</dt>
+            <dt className={styles.num}>
+              <CountUp text={item.num} />
+            </dt>
             <dd className={styles.label}>{item.label}</dd>
           </div>
         ))}
-      </dl>
+      </Reveal>
     </div>
   );
 }

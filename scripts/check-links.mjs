@@ -10,7 +10,7 @@
 import { readFileSync } from "node:fs";
 
 const BASE = process.env.BASE || "http://localhost:3000";
-const PAGES = ["/", "/about-us/"];
+const PAGES = ["/", "/about-us/", "/procedures/", "/our-doctors/", "/testimonials/", "/plastic-cosmetic-surgery-videos/", "/contact-us/"];
 const live = JSON.parse(readFileSync(new URL("./live-urls.json", import.meta.url)));
 const liveSet = new Set([...live.paths, ...live.newPathsExpected]);
 const problems = [];
@@ -34,7 +34,7 @@ for (const page of PAGES) {
     total++;
     if (href === "#") problems.push(`${page}: placeholder href="#"`);
     else if (href.startsWith("tel:") || href.startsWith("mailto:")) continue;
-    else if (href.startsWith("https://www.youtube.com/")) continue;
+    else if (href.startsWith("https://www.youtube.com/") || href.startsWith("https://www.google.com/maps/")) continue;
     else if (href.startsWith("#")) { if (!idsIn(html).has(href.slice(1))) problems.push(`${page}: missing anchor ${href}`); }
     else if (href.startsWith("/")) {
       const [path, hash] = href.split("#");

@@ -9,6 +9,9 @@ Items marked **BLOCKING** should be settled before this preview is treated as fi
 - [ ] Decide what happens to `/sample-page/`, posts, categories and author pages.
 - [ ] Sitemap strategy at cutover: the live site serves `/sitemap_index.xml` (Yoast). `app/sitemap.ts` currently lists the 2 built pages only.
 
+- [ ] **BLOCKING** New dedicated pages with NEW URLs: `/procedures/`, `/our-doctors/`, `/testimonials/`. Titles/descriptions are proposals.
+- [ ] `/contact-us/` and `/plastic-cosmetic-surgery-videos/` already exist live; the rebuilt copy replaces them. Compare wording and keep the live URLs.
+
 ## Metadata (every item below is a proposal until approved)
 - [ ] Home title: "Clinique Belle — Plastic, Cosmetic & Reconstructive Surgery, Bangalore" (70 chars). Live title today: "Home - Clinique belle".
 - [ ] **BLOCKING** Home meta description is a **PROPOSAL** (neither the supplied file nor the live site has one).
