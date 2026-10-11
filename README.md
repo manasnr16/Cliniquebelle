@@ -42,6 +42,24 @@ Pages not built yet (procedures, doctors, gallery…) link to the **live WordPre
 
 Every response carries `X-Robots-Tag: noindex`, a `noindex` meta tag, and `robots.txt` blocks all crawlers. Canonical tags always point to `https://cliniquebelle.in/...`. Set `ALLOW_INDEXING=true` **only** on the final, approved production deployment (see `.env.example`).
 
+## Photos (drop-in slots)
+
+The Renewal-style design uses photo slots. Put a file named after the slot in `public/images/` (jpg, jpeg, webp or png) and it is picked up on the next build. Until a file exists the slot shows a plum gradient.
+
+| File name | Where it appears | Suggested size |
+| --- | --- | --- |
+| `hero-welcome` | Home banner, slide 1 (general) | 2400×1400, subject on the right |
+| `hero-mummy-makeover` | Home banner, slide 2 (mommy makeover) | 2400×1400 |
+| `hero-hair` | Home banner, slide 3 (hair transplantation) | 2400×1400 |
+| `hero-face` | Home banner, slide 4 (facial rejuvenation) | 2400×1400 |
+| `testimonial` | Left half of the Home testimonials band | 1200×1400, portrait |
+| `proc-hair`, `proc-body`, `proc-face`, `proc-breast`, `proc-reconstructive` | Home carousel + Procedures page | 1000×1250 (4:5) |
+| `doctors-band` | Home "Our doctors" band | 2400×1200 |
+| `page-procedures`, `page-doctors`, `page-testimonials`, `page-videos`, `page-contact` | Banner behind each inner page title | 2400×900 |
+| `about-expect` | About Us, "What to expect" | 1000×1250 |
+
+Use licensed or clinic-owned photos of Indian patients and staff.
+
 ## Known limitations
 
 - **Photos are hotlinked** from `cliniquebelle.in/wp-content/uploads/` (no originals were supplied). Replace with files in `public/images/` and update `content/doctors.ts`.
