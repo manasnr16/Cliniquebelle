@@ -60,6 +60,8 @@ The Renewal-style design uses photo slots. Put a file named after the slot in `p
 
 Use licensed or clinic-owned photos of Indian patients and staff.
 
+**Current photos are AI-generated placeholders** (made with Stable Diffusion models via the free AI Horde service, so they show no real person). They are in `public/images/` under the names above. Replace any of them by dropping a file with the same name over it. Before launch the clinic should decide whether AI imagery is acceptable on a medical site (see `APPROVALS.md`).
+
 ## Known limitations
 
 - **Photos are hotlinked** from `cliniquebelle.in/wp-content/uploads/` (no originals were supplied). Replace with files in `public/images/` and update `content/doctors.ts`.

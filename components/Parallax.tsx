@@ -16,7 +16,10 @@ export default function Parallax({ children, speed = 0.18, className }: { childr
       if (!parent) return;
       const r = parent.getBoundingClientRect();
       if (r.bottom < -100 || r.top > window.innerHeight + 100) return;
-      const offset = (r.top + r.height / 2 - window.innerHeight / 2) * -speed;
+      // Never move further than the layer's built-in headroom (14% of the section), or an edge would show.
+      const max = r.height * 0.14 - 2;
+      const raw = (r.top + r.height / 2 - window.innerHeight / 2) * -speed;
+      const offset = Math.max(-max, Math.min(max, raw));
       el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
     };
     const onScroll = () => {

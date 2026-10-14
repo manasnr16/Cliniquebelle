@@ -34,7 +34,7 @@ for (const page of PAGES) {
     total++;
     if (href === "#") problems.push(`${page}: placeholder href="#"`);
     else if (href.startsWith("tel:") || href.startsWith("mailto:")) continue;
-    else if (href.startsWith("https://www.youtube.com/") || href.startsWith("https://www.google.com/maps/")) continue;
+    else if (href.startsWith("https://www.youtube.com/") || href.startsWith("https://www.google.com/maps/") || href.startsWith("https://wa.me/")) continue;
     else if (href.startsWith("#")) { if (!idsIn(html).has(href.slice(1))) problems.push(`${page}: missing anchor ${href}`); }
     else if (href.startsWith("/")) {
       const [path, hash] = href.split("#");

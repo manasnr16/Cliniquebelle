@@ -22,6 +22,13 @@ export default function Reveal({ children, as: Tag = "div", variant = "up", dela
       el.classList.add("in");
       return;
     }
+    // Already on screen when this mounts (e.g. above the fold on load): show it right away
+    // instead of waiting on the observer's first async callback, so nothing flashes in late.
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.94 && r.bottom > 0) {
+      el.classList.add("in");
+      return;
+    }
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {

@@ -45,7 +45,14 @@
 /* ===== DOCTORS BAND ===== */
 .band { position: relative; overflow: hidden; color: #fff; text-align: center; padding: 140px 0; background: var(--plum-900); }
 .bandBg { position: absolute; inset: 0; }
-.bandShade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(43, 15, 42, 0.55), rgba(61, 22, 54, 0.82)); }
+.bandShade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 70% at 50% 42%, rgba(43, 15, 42, 0.58), rgba(43, 15, 42, 0.28) 70%, transparent 100%),
+    radial-gradient(ellipse 45% 35% at 88% 6%, rgba(217, 170, 211, 0.16), transparent 60%),
+    linear-gradient(180deg, rgba(43, 15, 42, 0.42) 0%, rgba(74, 27, 69, 0.46) 45%, rgba(43, 15, 42, 0.76) 100%);
+}
 .bandInner { position: relative; max-width: 780px; }
 .bandInner h2 { color: #fff; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; }
 .bandInner p { margin: 20px auto 32px; color: rgba(255, 255, 255, 0.86); max-width: 52ch; font-size: 16px; }

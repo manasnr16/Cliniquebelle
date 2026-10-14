@@ -157,7 +157,7 @@ export default function HomePage() {
       {/* ===== TESTIMONIALS (split band) ===== */}
       <section className={styles.reviews} aria-labelledby="reviews-heading">
         <div className={styles.reviewPhoto}>
-          <SlotImage slot="testimonial" alt="" sizes="(max-width: 980px) 100vw, 50vw" position="center top" />
+          <SlotImage slot="testimonial" alt="" sizes="(max-width: 980px) 100vw, 50vw" position="center 18%" />
         </div>
         <div className={styles.reviewBody}>
           <Reveal variant="left">

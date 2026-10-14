@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Button from "./Button";
 import styles from "./HeroCarousel.module.css";
@@ -25,7 +25,6 @@ export default function HeroCarousel({ slides, secondary, children }: Props) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const n = slides.length;
-  const go = useCallback((to: number) => setI(((to % n) + n) % n), [n]);
 
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -48,7 +47,11 @@ export default function HeroCarousel({ slides, secondary, children }: Props) {
         return (
           <div key={s.id} className={`${styles.slide} ${styles[`tone-${s.tone}`]} ${active ? styles.active : ""}`} aria-hidden={!active} role="group" aria-roledescription="slide" aria-label={`${idx + 1} of ${n}`}>
             <div className={styles.media}>
-              {s.src ? <Image src={s.src} alt={s.alt} fill sizes="100vw" priority={idx === 0} className={styles.img} /> : null}
+              {s.src ? (
+                <div className={styles.imgWrap}>
+                  <Image src={s.src} alt={s.alt} fill sizes="(max-width: 980px) 100vw, 70vw" priority={idx === 0} className={styles.img} />
+                </div>
+              ) : null}
             </div>
             <div className={styles.shade} />
             <div className={`wrap ${styles.content}`}>
@@ -78,23 +81,6 @@ export default function HeroCarousel({ slides, secondary, children }: Props) {
         );
       })}
 
-      <div className={styles.controls}>
-        <div className={`wrap ${styles.controlsInner}`}>
-          <div className={styles.dots}>
-            {slides.map((s, idx) => (
-              <button key={s.id} type="button" onClick={() => go(idx)} aria-label={`Show slide ${idx + 1}: ${s.titleEm}`} aria-current={idx === i} className={idx === i ? styles.dotOn : styles.dot} />
-            ))}
-          </div>
-          <div className={styles.arrows}>
-            <button type="button" onClick={() => go(i - 1)} aria-label="Previous slide">
-              ←
-            </button>
-            <button type="button" onClick={() => go(i + 1)} aria-label="Next slide">
-              →
-            </button>
-          </div>
-        </div>
-      </div>
       {children}
     </section>
   );

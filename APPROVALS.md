@@ -37,6 +37,7 @@ Items marked **BLOCKING** should be settled before this preview is treated as fi
 - [ ] Palette taken from the HTML files (plum `#2B0F2A`, `#6B2A66`), not the provisional palette in the original brief.
 
 ## Assets
+- [ ] **BLOCKING** All 17 photos in `public/images/` are AI-generated stand-ins (people shown are not real patients or staff). Clinic to approve their use, or replace with real, consented photography. Indian medical-advertising rules and patient-expectation concerns apply: do not present generated people as real patients or results.
 - [ ] Original doctor photos and a vector logo; permission to use the photos.
 - [ ] Facebook / Instagram profile URLs (icons omitted until supplied).
 

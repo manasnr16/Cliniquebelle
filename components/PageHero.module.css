@@ -1,13 +1,20 @@
-.hero { position: relative; overflow: hidden; color: #fff; background: linear-gradient(120deg, var(--plum-900), var(--purple-700)); padding: 72px 0 80px; }
-.glow { position: absolute; inset: 0; background: radial-gradient(circle at 85% 20%, rgba(217, 170, 211, 0.35), transparent 45%), radial-gradient(circle at 10% 100%, rgba(176, 141, 87, 0.22), transparent 40%); }
+.hero { position: relative; overflow: hidden; color: #fff; background: linear-gradient(120deg, var(--plum-800), var(--purple-600)); padding: 76px 0 84px; }
+.glow { position: absolute; inset: 0; background: radial-gradient(circle at 85% 20%, rgba(217, 170, 211, 0.4), transparent 45%), radial-gradient(circle at 10% 100%, rgba(176, 141, 87, 0.26), transparent 40%); }
 .photo { position: absolute; inset: 0; }
-.photoShade { position: absolute; inset: 0; background: linear-gradient(95deg, rgba(43, 15, 42, 0.92) 0%, rgba(43, 15, 42, 0.7) 55%, rgba(43, 15, 42, 0.3) 100%); }
+.photoShade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 60% at 6% 100%, rgba(176, 141, 87, 0.2), transparent 60%),
+    linear-gradient(100deg, rgba(43, 15, 42, 0.8) 0%, rgba(74, 27, 69, 0.56) 36%, rgba(107, 42, 102, 0.22) 62%, rgba(107, 42, 102, 0.06) 100%);
+}
 .inner { position: relative; }
 .crumb { font-size: 12.5px; color: rgba(255, 255, 255, 0.72); margin-bottom: 22px; }
 .crumb ol { display: flex; flex-wrap: wrap; }
 .crumb li + li::before { content: "/"; color: var(--lilac-300); margin: 0 8px; }
 .crumb a:hover { color: #fff; }
-.eyebrow { display: block; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lilac-300); font-weight: 500; margin-bottom: 14px; }
+.eyebrow { display: flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lilac-300); font-weight: 500; margin-bottom: 14px; }
+.eyebrow::before { content: ""; display: inline-block; width: 22px; height: 2px; background: var(--gold); flex-shrink: 0; }
 .hero h1 { color: #fff; font-size: clamp(36px, 5.4vw, 66px); line-height: 1.06; letter-spacing: -0.02em; max-width: 18ch; }
 .hero h1 em { font-style: italic; color: var(--lilac-300); font-weight: 400; }
 .lede { margin-top: 20px; font-size: 17px; color: rgba(255, 255, 255, 0.84); max-width: 56ch; line-height: 1.65; }
